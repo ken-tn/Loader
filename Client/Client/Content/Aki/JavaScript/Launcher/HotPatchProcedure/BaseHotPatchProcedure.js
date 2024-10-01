@@ -22,8 +22,8 @@ class BaseHotPatchProcedure {
       (this.KSr = void 0),
       (this.ViewMgr = void 0),
       (this.KSr = e),
-      this.Mounted = false;
-      (this.ViewMgr = t);
+      (this.Mounted = false);
+    this.ViewMgr = t;
   }
   async Start() {
     return (
@@ -52,60 +52,60 @@ class BaseHotPatchProcedure {
                   "UpdateRecordFailed",
                   "HotFixQuit",
                   "HotFixRetry",
-                  void 0,
+                  void 0
                 ).catch((e) => {
                   LauncherLog_1.LauncherLog.ErrorWithStack(
                     "弹窗提示远程配置获取失败异常",
-                    e,
+                    e
                   );
                 })
               : 3 === e
-                ? await this.ViewMgr.ShowDialog(
-                    !0,
-                    "HotFixTipsTitle",
-                    "ConfigValueError",
-                    "HotFixQuit",
-                    "HotFixRetry",
-                    void 0,
-                  ).catch((e) => {
-                    LauncherLog_1.LauncherLog.ErrorWithStack(
-                      "弹窗提示远程配置获取失败异常",
-                      e,
-                    );
-                  })
-                : 2 === e
-                  ? await this.ViewMgr.ShowDialog(
-                      !0,
-                      "HotFixTipsTitle",
-                      "CDNNotRefreshed",
-                      "HotFixQuit",
-                      "HotFixRetry",
-                      void 0,
-                    ).catch((e) => {
-                      LauncherLog_1.LauncherLog.ErrorWithStack(
-                        "弹窗提示远程配置获取失败异常",
-                        e,
-                      );
-                    })
-                  : await this.ViewMgr.ShowDialog(
-                      !0,
-                      "HotFixTipsTitle",
-                      "GetRemoteVersionFailed",
-                      "HotFixQuit",
-                      "HotFixRetry",
-                      void 0,
-                    ).catch((e) => {
-                      LauncherLog_1.LauncherLog.ErrorWithStack(
-                        "弹窗提示远程配置获取失败异常",
-                        e,
-                      );
-                    }))
+              ? await this.ViewMgr.ShowDialog(
+                  !0,
+                  "HotFixTipsTitle",
+                  "ConfigValueError",
+                  "HotFixQuit",
+                  "HotFixRetry",
+                  void 0
+                ).catch((e) => {
+                  LauncherLog_1.LauncherLog.ErrorWithStack(
+                    "弹窗提示远程配置获取失败异常",
+                    e
+                  );
+                })
+              : 2 === e
+              ? await this.ViewMgr.ShowDialog(
+                  !0,
+                  "HotFixTipsTitle",
+                  "CDNNotRefreshed",
+                  "HotFixQuit",
+                  "HotFixRetry",
+                  void 0
+                ).catch((e) => {
+                  LauncherLog_1.LauncherLog.ErrorWithStack(
+                    "弹窗提示远程配置获取失败异常",
+                    e
+                  );
+                })
+              : await this.ViewMgr.ShowDialog(
+                  !0,
+                  "HotFixTipsTitle",
+                  "GetRemoteVersionFailed",
+                  "HotFixQuit",
+                  "HotFixRetry",
+                  void 0
+                ).catch((e) => {
+                  LauncherLog_1.LauncherLog.ErrorWithStack(
+                    "弹窗提示远程配置获取失败异常",
+                    e
+                  );
+                }))
             ? t()
             : ((r = !1),
               AppUtil_1.AppUtil.QuitGame("GetRemoteVersionConfig failed"),
               await this.ViewMgr.WaitFrame(),
               { Success: !0 });
-        },
+        }
       ),
       r
     );
@@ -231,11 +231,11 @@ class BaseHotPatchProcedure {
             "HotFixQuit",
             "HotFixRetry",
             void 0,
-            e,
+            e
           ).catch((e) => {
             LauncherLog_1.LauncherLog.ErrorWithStack(
               "弹窗异常（下载Index文件失败）",
-              e,
+              e
             );
           }))
             ? t()
@@ -243,7 +243,7 @@ class BaseHotPatchProcedure {
               AppUtil_1.AppUtil.QuitGame("DownloadIndexFile failed"),
               await this.ViewMgr.WaitFrame(),
               { Success: !0 });
-        },
+        }
       ),
       i)
     );
@@ -261,11 +261,11 @@ class BaseHotPatchProcedure {
             "ResolveIndexFileFailed",
             "HotFixQuit",
             "HotFixRetry",
-            void 0,
+            void 0
           ).catch((e) => {
             LauncherLog_1.LauncherLog.ErrorWithStack(
               "弹窗异常（解析补丁列表失败）",
-              e,
+              e
             );
           }))
             ? t()
@@ -273,7 +273,7 @@ class BaseHotPatchProcedure {
               AppUtil_1.AppUtil.QuitGame("ResolveIndexFile failed"),
               await this.ViewMgr.WaitFrame(),
               { Success: !0 });
-        },
+        }
       ),
       o
     );
@@ -295,11 +295,11 @@ class BaseHotPatchProcedure {
             "ValidateResourceFailed",
             "HotFixQuit",
             "HotFixRetry",
-            void 0,
+            void 0
           ).catch((e) => {
             LauncherLog_1.LauncherLog.ErrorWithStack(
               "弹窗异常（检验资源文件失败）",
-              e,
+              e
             );
           }))
             ? t()
@@ -307,7 +307,7 @@ class BaseHotPatchProcedure {
               AppUtil_1.AppUtil.QuitGame("CheckResourceFiles failed"),
               await this.ViewMgr.WaitFrame(),
               { Success: !0 });
-        },
+        }
       ),
       o
     );
@@ -316,7 +316,7 @@ class BaseHotPatchProcedure {
     do {
       var t = UE.KuroLauncherLibrary.DoesDiskHaveEnoughSpace(
           UE.KuroLauncherLibrary.GameSavedDir(),
-          e,
+          e
         ),
         o = new HotPatchLogReport_1.HotPatchLog(),
         r =
@@ -339,7 +339,7 @@ class BaseHotPatchProcedure {
             "HotFixCancel",
             "HotFixContinue",
             void 0,
-            LauncherTextLib_1.LauncherTextLib.SpaceSizeFormat(e),
+            LauncherTextLib_1.LauncherTextLib.SpaceSizeFormat(e)
           ))
         )
           return (
@@ -369,7 +369,7 @@ class BaseHotPatchProcedure {
         e,
         LauncherTextLib_1.LauncherTextLib.DownloadSpeedFormat(t),
         LauncherTextLib_1.LauncherTextLib.SpaceSizeFormat(o),
-        LauncherTextLib_1.LauncherTextLib.SpaceSizeFormat(a),
+        LauncherTextLib_1.LauncherTextLib.SpaceSizeFormat(a)
       );
     };
     var n = async (e, t) => {
@@ -388,11 +388,11 @@ class BaseHotPatchProcedure {
         "HotFixQuit",
         "HotFixRetry",
         void 0,
-        e,
+        e
       ).catch((e) => {
         LauncherLog_1.LauncherLog.ErrorWithStack(
           "弹窗异常（下载资源补丁失败）",
-          e,
+          e
         );
       }))
         ? t()
@@ -432,11 +432,11 @@ class BaseHotPatchProcedure {
             "GetResourceInfoFailed",
             "HotFixQuit",
             "HotFixRetry",
-            void 0,
+            void 0
           ).catch((e) => {
             LauncherLog_1.LauncherLog.ErrorWithStack(
               "弹窗异常（分析资源补丁类型失败）",
-              e,
+              e
             );
           }))
             ? t()
@@ -444,7 +444,7 @@ class BaseHotPatchProcedure {
               AppUtil_1.AppUtil.QuitGame("CheckNeedRestartApp failed"),
               await this.ViewMgr.WaitFrame(),
               { Success: !0 });
-        },
+        }
       ),
       o
     );
@@ -465,18 +465,18 @@ class BaseHotPatchProcedure {
           // puerts_1.logger.info(`[here:] mounting ${a.SavePath + ".pak"} at mountOrder ${a.MountOrder}`);
           var r = a.SavePath + ".pak";
           UE.KuroPakMountStatic.MountPak(r, a.MountOrder);
-            UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
+          UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
         }
     }
     if (!this.Mounted) {
-        this.Mounted = true;
-        let modPath = UE.BlueprintPathsLibrary.RootDir() + "Mod";
-        let files = UE.KuroStaticLibrary.GetFilesRecursive(modPath, "*.pak");
-        for (let e = 0; e < files.Num(); e++) {
-            let f = files.Get(e);
-            puerts_1.logger.info(`[here:] mounting ${f}`);
-            UE.KuroPakMountStatic.MountPak(f, 4242);
-        }
+      this.Mounted = true;
+      let modPath = UE.BlueprintPathsLibrary.RootDir() + "Mod";
+      let files = UE.KuroStaticLibrary.GetFilesRecursive(modPath, "*.pak");
+      for (let e = 0; e < files.Num(); e++) {
+        let f = files.Get(e);
+        puerts_1.logger.info(`[here:] mounting ${f}`);
+        UE.KuroPakMountStatic.MountPak(f, 4242);
+      }
     }
     return UE.KuroPakMountStatic.StartSha1Check(), !0;
   }
@@ -484,18 +484,18 @@ class BaseHotPatchProcedure {
     RemoteConfig_1.RemoteInfo?.Config?.LauncherVersion &&
       LauncherStorageLib_1.LauncherStorageLib.SetGlobal(
         LauncherStorageLib_1.ELauncherStorageGlobalKey.LauncherPatchVersion,
-        RemoteConfig_1.RemoteInfo?.Config?.LauncherVersion,
+        RemoteConfig_1.RemoteInfo?.Config?.LauncherVersion
       ),
       RemoteConfig_1.RemoteInfo?.Config?.ResourceVersion &&
         LauncherStorageLib_1.LauncherStorageLib.SetGlobal(
           LauncherStorageLib_1.ELauncherStorageGlobalKey.PatchVersion,
-          RemoteConfig_1.RemoteInfo?.Config?.ResourceVersion,
+          RemoteConfig_1.RemoteInfo?.Config?.ResourceVersion
         ),
       RemoteConfig_1.RemoteInfo?.Config?.ChangeList &&
         0 < RemoteConfig_1.RemoteInfo?.Config?.ChangeList.length &&
         LauncherStorageLib_1.LauncherStorageLib.SetGlobal(
           LauncherStorageLib_1.ELauncherStorageGlobalKey.PatchP4Version,
-          RemoteConfig_1.RemoteInfo?.Config?.ChangeList,
+          RemoteConfig_1.RemoteInfo?.Config?.ChangeList
         );
   }
   async Complete() {
@@ -515,7 +515,7 @@ class BaseHotPatchProcedure {
       LauncherLog_1.LauncherLog.Info(
         "开始获取远程配置文件",
         ["prefix", h],
-        ["configUrl", t],
+        ["configUrl", t]
       );
       var a,
         c = await (0, UrlPrefixHttpRequest_1.httpRequest)(h + t),
@@ -528,7 +528,7 @@ class BaseHotPatchProcedure {
         ? (LauncherLog_1.LauncherLog.Error(
             "获取远程配置失败",
             ["reason", c.Result],
-            ["errorCode", c.Code],
+            ["errorCode", c.Code]
           ),
           (a = { Success: "failed", Reason: c.Result, HttpCode: c.Code }),
           (_.success = !1),
@@ -541,7 +541,7 @@ class BaseHotPatchProcedure {
           (a = (0, puerts_1.$ref)(void 0)),
           UE.KuroLauncherLibrary.Decrypt(c.Result, a)
             ? ((c = new RemoteConfig_1.RemoteConfig(
-                JSON.parse((0, puerts_1.$unref)(a)),
+                JSON.parse((0, puerts_1.$unref)(a))
               )),
               (_.success = !0),
               (n.s_step_result = LauncherSerialize_1.LauncherJson.Stringify(_)),
@@ -616,13 +616,13 @@ class BaseHotPatchProcedure {
       if (
         (LauncherLog_1.LauncherLog.Info(
           "所有远程配置更新时间戳字段都不可用，强行设置一个远程配置",
-          ["configCount", o.size],
+          ["configCount", o.size]
         ),
         o.size <= 0)
       )
         return (
           LauncherLog_1.LauncherLog.Error(
-            "所有远程配置更新时间戳字段都不可用，并且没有获取到有效的配置个数。",
+            "所有远程配置更新时间戳字段都不可用，并且没有获取到有效的配置个数。"
           ),
           (a.success = !1),
           (a.info = "failed, can not assign a valid remote config."),
@@ -645,7 +645,7 @@ class BaseHotPatchProcedure {
         RemoteConfig_1.RemoteInfo.Config.UpdateTime > e &&
         LauncherStorageLib_1.LauncherStorageLib.SetGlobal(
           LauncherStorageLib_1.ELauncherStorageGlobalKey.RemoteVersionUpdate,
-          RemoteConfig_1.RemoteInfo.Config.UpdateTime,
+          RemoteConfig_1.RemoteInfo.Config.UpdateTime
         ),
       4
     );
@@ -661,7 +661,7 @@ class BaseHotPatchProcedure {
       UE.KuroLauncherLibrary.Decrypt((0, puerts_1.$unref)(i), a)
       ? (LauncherLog_1.LauncherLog.Info("灰度转版本..."),
         (RemoteConfig_1.RemoteInfo.Config = JSON.parse(
-          (0, puerts_1.$unref)(a),
+          (0, puerts_1.$unref)(a)
         )),
         4)
       : ((r = `${BaseConfigController_1.BaseConfigController.GetMixUri()}/${this.KSr.GetPlatform()}/config.json`),
@@ -678,10 +678,10 @@ class BaseHotPatchProcedure {
         void 0 ===
         (t = LauncherStorageLib_1.LauncherStorageLib.GetGlobal(
           LauncherStorageLib_1.ELauncherStorageGlobalKey.RemoteVersionUpdate,
-          0,
+          0
         ))
           ? (LauncherLog_1.LauncherLog.Info(
-              "获取远程配置上次更新的本地记录失败！",
+              "获取远程配置上次更新的本地记录失败！"
             ),
             (a.success = !1),
             (a.info =

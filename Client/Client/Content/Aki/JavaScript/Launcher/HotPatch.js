@@ -54,7 +54,7 @@ class HotPatch {
             (e = (0, puerts_1.$unref)(o))),
           LauncherStorageLib_1.LauncherStorageLib.GetGlobalString(
             "__kr_blvr__",
-            "",
+            ""
           )),
         o = a !== e,
         a =
@@ -62,7 +62,7 @@ class HotPatch {
             "修复launcher而重启",
             ["kr_br", o],
             ["cur", e],
-            ["blvr", a],
+            ["blvr", a]
           ),
           new HotPatchLogReport_1.HotPatchLog()),
         r = ((a.s_step_id = "fix_launcher_restart_tiwce"), { kr_br: o });
@@ -74,19 +74,19 @@ class HotPatch {
         return (
           LauncherStorageLib_1.LauncherStorageLib.SetGlobalString(
             "__kr_blvr__",
-            e,
+            e
           ),
           LauncherLog_1.LauncherLog.Info("热更器因 kr_br 重启"),
           UE.KuroSqliteLibrary.CloseAllConnections(),
           UE.KuroRenderingRuntimeBPPluginBPLibrary.SetSceneRenderingState(
             t,
-            !1,
+            !1
           ),
           UE.KismetSystemLibrary.ExecuteConsoleCommand(t, "r.fog 0"),
           UE.KuroLauncherLibrary.ReloadShaderLibrary(),
           void UE.GameplayStatics.OpenLevel(
             t,
-            new UE.FName("/Game/Aki/Map/Launch/Bootstrap"),
+            new UE.FName("/Game/Aki/Map/Launch/Bootstrap")
           )
         );
     }
@@ -110,18 +110,18 @@ class HotPatch {
   static StartLogin() {
     HotPatch.USr.MountGamePak(),
       LauncherLog_1.LauncherLog.Info(
-        "Game Pak mounted, preloading Blueprint Types.",
+        "Game Pak mounted, preloading Blueprint Types."
       ),
       UE.KuroLauncherLibrary.ReloadShaderLibrary(),
       UE.KuroLauncherLibrary.PreloadRequiredBp(),
       UE.KuroStaticLibrary.IsEditor(HotPatch.USr) ||
         UE.KismetSystemLibrary.ExecuteConsoleCommand(
           HotPatch.USr.GetWorld(),
-          "DisableAllScreenMessages",
+          "DisableAllScreenMessages"
         ),
       UE.Actor.SetKuroNetMode(1),
       LauncherLog_1.LauncherLog.Info(
-        "Launch success, ready to call main. Byebye launcher.",
+        "Launch success, ready to call main. Byebye launcher."
       ),
       BaseConfigController_1.BaseConfigController.UpdatePackageConfig(!0),
       UE.WwiseExternalSourceStatics.InitExternalSourceConfigs(),
@@ -155,7 +155,7 @@ class HotPatch {
           "SdkInitializeFail",
           void 0,
           void 0,
-          "HotFixQuit",
+          "HotFixQuit"
         );
       if (!Platform_1.Platform.IsPs5Platform())
         return void ((await r()) && AppUtil_1.AppUtil.QuitGame("ProcessLine"));
@@ -182,7 +182,7 @@ class HotPatch {
             "GetRemoteConfigFailed",
             void 0,
             void 0,
-            "HotFixRetry",
+            "HotFixRetry"
           ),
           t()
         )
@@ -193,7 +193,7 @@ class HotPatch {
             "GetRemoteConfigFailed",
             "HotFixQuit",
             "HotFixRetry",
-            void 0,
+            void 0
           ))
             ? t()
             : (AppUtil_1.AppUtil.QuitGame("ProcessLine"),
@@ -213,7 +213,7 @@ class HotPatch {
       _ =
         (HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
           HotPatchLogReport_1.LoginLogEventDefine.Update,
-          "update_start",
+          "update_start"
         ),
         new HotPatchLogReport_1.HotPatchLog()),
       _ =
@@ -236,7 +236,7 @@ class HotPatch {
         LauncherLog_1.LauncherLog.Info(
           "应用配置了不需要执行热更流程，直接进入游戏",
           ["NeedHotPatch", a],
-          ["NeedBackToGame", h],
+          ["NeedBackToGame", h]
         ),
         LanguageUpdateManager_1.LanguageUpdateManager.Init(HotPatch.RSr);
       const H = await HotPatch.rga(t, o, !0);
@@ -256,14 +256,14 @@ class HotPatch {
       "Android" === t
         ? AndroidHotPatchProcedure_1.AndroidHotPatchProcedure
         : "iOS" === t
-          ? IosHotPatchProcedure_1.IosHotPatchProcedure
-          : OthersHotPatchProcedure_1.OthersHotPatchProcedure
+        ? IosHotPatchProcedure_1.IosHotPatchProcedure
+        : OthersHotPatchProcedure_1.OthersHotPatchProcedure
     )(HotPatch.xSr, o)),
       HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
         SdkReportData_1.HotPatchReportData.CreateData(
           1,
-          new Map([["eventParams", "update_start"]]),
-        ),
+          new Map([["eventParams", "update_start"]])
+        )
       );
     a = new HotPatchLogReport_1.HotPatchLog();
     if (
@@ -274,14 +274,14 @@ class HotPatch {
       HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
         SdkReportData_1.HotPatchReportData.CreateData(
           2,
-          new Map([["eventParams", "update_start"]]),
-        ),
+          new Map([["eventParams", "update_start"]])
+        )
       ),
         HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
           SdkReportData_1.HotPatchReportData.CreateData(
             1,
-            new Map([["eventParams", "update_remote"]]),
-          ),
+            new Map([["eventParams", "update_remote"]])
+          )
         ),
         (HotPatch.State = 2);
       h = new HotPatchLogReport_1.HotPatchLog();
@@ -293,14 +293,14 @@ class HotPatch {
         HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
           SdkReportData_1.HotPatchReportData.CreateData(
             2,
-            new Map([["eventParams", "update_remote"]]),
-          ),
+            new Map([["eventParams", "update_remote"]])
+          )
         ),
           HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
             SdkReportData_1.HotPatchReportData.CreateData(
               1,
-              new Map([["eventParams", "check_app_version"]]),
-            ),
+              new Map([["eventParams", "check_app_version"]])
+            )
           );
         (u = new HotPatchLogReport_1.HotPatchLog()),
           (p =
@@ -310,14 +310,14 @@ class HotPatch {
           LauncherLog_1.LauncherLog.Info(
             "需要更新app",
             ["CurAppVer", UE.KuroLauncherLibrary.GetAppVersion()],
-            ["LatestAppVer", RemoteConfig_1.RemoteInfo.Config.PackageVersion],
+            ["LatestAppVer", RemoteConfig_1.RemoteInfo.Config.PackageVersion]
           );
           const L = { NeedUpdateApp: !0 };
           (u.s_step_result = LauncherSerialize_1.LauncherJson.Stringify(L)),
             HotPatchLogReport_1.HotPatchLogReport.Report(u),
             HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
               HotPatchLogReport_1.LoginLogEventDefine.Update,
-              "update_failed",
+              "update_failed"
             ),
             (n.success = !1),
             (n.info = "app need update"),
@@ -326,11 +326,11 @@ class HotPatch {
             HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
               SdkReportData_1.HotPatchReportData.CreateData(
                 3,
-                new Map([["eventParams", "check_app_version_failed"]]),
-              ),
+                new Map([["eventParams", "check_app_version_failed"]])
+              )
             ),
             await PackageUpdateController_1.PackageUpdateController.TryOpenPackageUpdateTipsView(
-              o,
+              o
             ),
             void (await o.WaitFrame());
         } else {
@@ -339,8 +339,8 @@ class HotPatch {
             HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
               SdkReportData_1.HotPatchReportData.CreateData(
                 2,
-                new Map([["eventParams", "check_app_version"]]),
-              ),
+                new Map([["eventParams", "check_app_version"]])
+              )
             );
           (u.s_step_result = LauncherSerialize_1.LauncherJson.Stringify({
             NeedUpdateApp: !1,
@@ -349,8 +349,8 @@ class HotPatch {
             HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
               SdkReportData_1.HotPatchReportData.CreateData(
                 4,
-                new Map([["eventParams", "update_launcher"]]),
-              ),
+                new Map([["eventParams", "update_launcher"]])
+              )
             );
           (a = new HotPatchLogReport_1.HotPatchLog()),
             (h =
@@ -364,7 +364,7 @@ class HotPatch {
               HotPatch.RSr,
               p,
               h,
-              this.xSr,
+              this.xSr
             ));
           if (await P.UpdateResource(!1, u)) {
             a = new HotPatchLogReport_1.HotPatchLog();
@@ -376,8 +376,8 @@ class HotPatch {
               HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                 SdkReportData_1.HotPatchReportData.CreateData(
                   5,
-                  new Map([["eventParams", "update_launcher"]]),
-                ),
+                  new Map([["eventParams", "update_launcher"]])
+                )
               );
               (p = new HotPatchLogReport_1.HotPatchLog()),
                 (h =
@@ -398,14 +398,14 @@ class HotPatch {
                     LauncherSerialize_1.LauncherJson.Stringify(n)),
                   HotPatchLogReport_1.HotPatchLogReport.Report(_),
                   LauncherLog_1.LauncherLog.Info(
-                    "热更器有更新需要重启，开始重启热更器！",
+                    "热更器有更新需要重启，开始重启热更器！"
                   ),
                   HotFixSceneManager_1.HotFixSceneManager.StopHotPatchBgm(),
                   o.Destroy(),
                   UE.KuroSqliteLibrary.CloseAllConnections(),
                   UE.GameplayStatics.OpenLevel(
                     HotPatch.RSr,
-                    new UE.FName("/Game/Aki/Map/Launch/Bootstrap"),
+                    new UE.FName("/Game/Aki/Map/Launch/Bootstrap")
                   );
               } else {
                 const H = await HotPatch.rga(t, o);
@@ -417,7 +417,7 @@ class HotPatch {
                       PakKeyUpdate_1.PakKeyUpdate.Init(this.xSr),
                       await PakKeyUpdate_1.PakKeyUpdate.CheckPakKey(
                         void 0,
-                        void 0,
+                        void 0
                       ),
                       new HotPatchLogReport_1.HotPatchLog()),
                     d =
@@ -432,12 +432,12 @@ class HotPatch {
                       HotPatch.RSr,
                       p,
                       a,
-                      this.xSr,
+                      this.xSr
                     ),
                     p =
                       (d.push(u),
                       LanguageUpdateManager_1.LanguageUpdateManager.Init(
-                        HotPatch.RSr,
+                        HotPatch.RSr
                       ),
                       LanguageUpdateManager_1.LanguageUpdateManager.GetAllLanguagesVersionMisc());
                   for (const R of p) {
@@ -447,7 +447,7 @@ class HotPatch {
                         s,
                         R,
                         this.xSr,
-                        !R.NeedUpdate(),
+                        !R.NeedUpdate()
                       );
                     d.push(s);
                   }
@@ -455,16 +455,16 @@ class HotPatch {
                     (HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                       SdkReportData_1.HotPatchReportData.CreateData(
                         4,
-                        new Map([["eventParams", "update_voice"]]),
-                      ),
+                        new Map([["eventParams", "update_voice"]])
+                      )
                     ),
                     await P.UpdateResource(!0, ...d))
                   ) {
                     HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                       SdkReportData_1.HotPatchReportData.CreateData(
                         5,
-                        new Map([["eventParams", "update_voice"]]),
-                      ),
+                        new Map([["eventParams", "update_voice"]])
+                      )
                     );
                     a = new HotPatchLogReport_1.HotPatchLog();
                     (a.s_step_id = "launcher_hp_pre_complete"),
@@ -520,12 +520,12 @@ class HotPatch {
                                 : "HotFixRestartToRepairFiles",
                               void 0,
                               void 0,
-                              "HotFixQuit",
+                              "HotFixQuit"
                             )) &&
                             ("iOS" === t || "Windows" === t
                               ? AppUtil_1.AppUtil.QuitGame("ProcessLine")
                               : UE.KuroLauncherLibrary.RestartApplication(
-                                  '@echo off\nset /a "pid=%~1"\nset "exe_path=%~2"\n:waitloop\ntasklist | findstr /C:" %pid% " >nul\nif errorlevel 1 (\n\tgoto launch\n) else (\n\ttaskkill /pid %pid% /f >nul\n\ttimeout /t 1 /nobreak >nul\n\tgoto waitloop\n)\n:launch\nstart "" "%exe_path%"\nexit 0',
+                                  '@echo off\nset /a "pid=%~1"\nset "exe_path=%~2"\n:waitloop\ntasklist | findstr /C:" %pid% " >nul\nif errorlevel 1 (\n\tgoto launch\n) else (\n\ttaskkill /pid %pid% /f >nul\n\ttimeout /t 1 /nobreak >nul\n\tgoto waitloop\n)\n:launch\nstart "" "%exe_path%"\nexit 0'
                                 ))
                           )
                         : void 0;
@@ -533,8 +533,8 @@ class HotPatch {
                     HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                       SdkReportData_1.HotPatchReportData.CreateData(
                         4,
-                        new Map([["eventParams", "mount_pak"]]),
-                      ),
+                        new Map([["eventParams", "mount_pak"]])
+                      )
                     );
                     // var h = new HotPatchLogReport_1.HotPatchLog();
                     // let m1 = new ResourceUpdate_1.PatchFileInfo();
@@ -560,8 +560,8 @@ class HotPatch {
                         ? (HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                             SdkReportData_1.HotPatchReportData.CreateData(
                               5,
-                              new Map([["eventParams", "mount_pak"]]),
-                            ),
+                              new Map([["eventParams", "mount_pak"]])
+                            )
                           ),
                           ((u =
                             new HotPatchLogReport_1.HotPatchLog()).s_step_id =
@@ -569,11 +569,11 @@ class HotPatch {
                           HotPatchLogReport_1.HotPatchLogReport.Report(u),
                           await P.Complete(),
                           LauncherLog_1.LauncherLog.Info(
-                            "热更流程执行完毕，开始进入游戏场景",
+                            "热更流程执行完毕，开始进入游戏场景"
                           ),
                           HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
                             HotPatchLogReport_1.LoginLogEventDefine.Update,
-                            "update_success",
+                            "update_success"
                           ),
                           (n.success = !0),
                           (_.s_step_result =
@@ -607,12 +607,12 @@ class HotPatch {
                         : (HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
                             SdkReportData_1.HotPatchReportData.CreateData(
                               6,
-                              new Map([["eventParams", "mount_pak_failed"]]),
-                            ),
+                              new Map([["eventParams", "mount_pak_failed"]])
+                            )
                           ),
                           HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
                             HotPatchLogReport_1.LoginLogEventDefine.Update,
-                            "update_failed",
+                            "update_failed"
                           ),
                           (n.success = !1),
                           (n.info = "mount game resources failed"),
@@ -625,12 +625,12 @@ class HotPatch {
                         6,
                         new Map([
                           ["eventParams", "update_voice_update_resource_fail"],
-                        ]),
-                      ),
+                        ])
+                      )
                     ),
                       HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
                         HotPatchLogReport_1.LoginLogEventDefine.Update,
-                        "update_failed",
+                        "update_failed"
                       ),
                       (n.success = !1),
                       (n.info = "update game resources failed"),
@@ -642,7 +642,7 @@ class HotPatch {
             } else
               HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
                 HotPatchLogReport_1.LoginLogEventDefine.Update,
-                "update_failed",
+                "update_failed"
               ),
                 (n.success = !1),
                 (n.info = "mount launcher failed"),
@@ -654,13 +654,13 @@ class HotPatch {
                     6,
                     new Map([
                       ["eventParams", "update_launcher_mountpak_failed"],
-                    ]),
-                  ),
+                    ])
+                  )
                 );
           } else
             HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
               HotPatchLogReport_1.LoginLogEventDefine.Update,
-              "update_failed",
+              "update_failed"
             ),
               (n.success = !1),
               (n.info = "update launcher failed"),
@@ -671,14 +671,14 @@ class HotPatch {
                   6,
                   new Map([
                     ["eventParams", "update_launcher_updateResource_failed"],
-                  ]),
-                ),
+                  ])
+                )
               );
         }
       } else
         HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
           HotPatchLogReport_1.LoginLogEventDefine.Update,
-          "update_failed",
+          "update_failed"
         ),
           (n.success = !1),
           (n.info = "get remmote version config failed"),
@@ -687,13 +687,13 @@ class HotPatch {
           HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
             SdkReportData_1.HotPatchReportData.CreateData(
               3,
-              new Map([["eventParams", "update_remote_failed"]]),
-            ),
+              new Map([["eventParams", "update_remote_failed"]])
+            )
           );
     } else
       HotPatchLogReport_1.HotPatchLogReport.ReportLogin(
         HotPatchLogReport_1.LoginLogEventDefine.Update,
-        "update_failed",
+        "update_failed"
       ),
         (n.success = !1),
         (n.info = "get local app version failed"),
@@ -702,8 +702,8 @@ class HotPatch {
         HotPatchKuroSdk_1.HotPatchKuroSdk.ReportEvent(
           SdkReportData_1.HotPatchReportData.CreateData(
             3,
-            new Map([["eventParams", "update_start_failed"]]),
-          ),
+            new Map([["eventParams", "update_start_failed"]])
+          )
         );
   }
   static bSr(e, t) {
@@ -719,7 +719,7 @@ class HotPatch {
       LauncherLog_1.LauncherLog.Info(
         "",
         ["DriverVersion", t],
-        ["glVersion", r],
+        ["glVersion", r]
       ),
       r
     );
@@ -748,7 +748,7 @@ class HotPatch {
             HotPatchLogReport_1.HotPatchLogReport.Report(i),
             LauncherLog_1.LauncherLog.Info(
               "ios device is not support! app will quit.",
-              ["device", r],
+              ["device", r]
             ),
             await t.ShowDialog(
               !1,
@@ -756,7 +756,7 @@ class HotPatch {
               "MobileChipOutOfVersion",
               void 0,
               void 0,
-              "ConfirmText",
+              "ConfirmText"
             ),
             AppUtil_1.AppUtil.QuitGame("DeviceSupport"),
             await t.WaitFrame(),
@@ -776,7 +776,7 @@ class HotPatch {
         "MobileDriverOutOfVersion",
         void 0,
         void 0,
-        "ConfirmText",
+        "ConfirmText"
       ));
   }
   static pFa(e) {
@@ -795,7 +795,7 @@ class HotPatch {
         "EquipmentDriveOutOfVersion",
         void 0,
         void 0,
-        "ConfirmText",
+        "ConfirmText"
       ));
   }
   static async BSr(e) {
@@ -812,7 +812,7 @@ class HotPatch {
         LauncherLog_1.LauncherLog.Error(
           "precompile shaders total < remain.",
           ["remain", t],
-          ["total", a],
+          ["total", a]
         );
       else {
         var o = new HotPatchLogReport_1.HotPatchLog(),
@@ -826,11 +826,11 @@ class HotPatch {
             LauncherLog_1.LauncherLog.Info(
               "begin show precompile shaders progress.",
               ["remain", t],
-              ["total", a],
+              ["total", a]
             ),
             await e.WaitFrame(15),
             UE.KuroLauncherLibrary.SetPrecompileShaderBatchMode(
-              NetworkDefine_1.ETsCompileShaderBatchMode.Precompile,
+              NetworkDefine_1.ETsCompileShaderBatchMode.Precompile
             );
           0 < t;
 
@@ -842,7 +842,7 @@ class HotPatch {
             ["remain", t],
             ["total", a],
             ["rate", i],
-            ["percent", c],
+            ["percent", c]
           ),
             await e.UpdateProgress(!0, i, "CompilingShader", c),
             await e.WaitFrame(15),
@@ -862,10 +862,10 @@ class HotPatch {
     (e.s_step_id = "clear_patch_resources"),
       HotPatchLogReport_1.HotPatchLogReport.Report(e),
       new AppVersionMisc_1.LauncherVersionMisc().ClearAllPatchVersion(
-        HotPatch.RSr,
+        HotPatch.RSr
       );
     new AppVersionMisc_1.ResourceVersionMisc().ClearAllPatchVersion(
-      HotPatch.RSr,
+      HotPatch.RSr
     ),
       LanguageUpdateManager_1.LanguageUpdateManager.Init(HotPatch.RSr);
     e =
@@ -883,7 +883,7 @@ class HotPatch {
       HotFixSceneManager_1.HotFixSceneManager.StopHotPatchBgm(),
       UE.GameplayStatics.OpenLevel(
         HotPatch.RSr,
-        new UE.FName("/Game/Aki/Map/Launch/Bootstrap"),
+        new UE.FName("/Game/Aki/Map/Launch/Bootstrap")
       );
   }
 }
