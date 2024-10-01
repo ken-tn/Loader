@@ -462,7 +462,6 @@ class BaseHotPatchProcedure {
       var o = i.GetPakList();
       if (o)
         for (const a of o) {
-          // puerts_1.logger.info(`[here:] mounting ${a.SavePath + ".pak"} at mountOrder ${a.MountOrder}`);
           var r = a.SavePath + ".pak";
           UE.KuroPakMountStatic.MountPak(r, a.MountOrder);
           UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
