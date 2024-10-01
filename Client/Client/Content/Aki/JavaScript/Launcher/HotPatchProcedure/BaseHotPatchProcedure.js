@@ -462,19 +462,22 @@ class BaseHotPatchProcedure {
       var o = i.GetPakList();
       if (o)
         for (const a of o) {
-          puerts_1.logger.info(`[KUNMOD:] mounting ${a.SavePath + ".pak"} at mountOrder ${a.MountOrder}`);
+          // puerts_1.logger.info(`[here:] mounting ${a.SavePath + ".pak"} at mountOrder ${a.MountOrder}`);
           var r = a.SavePath + ".pak";
           UE.KuroPakMountStatic.MountPak(r, a.MountOrder);
-          if (a.PakSha1 !== "") {
             UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
-          }
         }
     }
-    // if (!this.Mounted) {
-    //     this.Mounted = true;
-    //     UE.KuroPakMountStatic.MountPak(`C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\km13.pak`, 5);
-    //     UE.KuroPakMountStatic.MountPak(`C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\tp13.pak`, 5);
-    // }
+    if (!this.Mounted) {
+        this.Mounted = true;
+        let modPath = UE.BlueprintPathsLibrary.RootDir() + "Mod";
+        let files = UE.KuroStaticLibrary.GetFilesRecursive(modPath, "*.pak");
+        for (let e = 0; e < files.Num(); e++) {
+            let f = files.Get(e);
+            puerts_1.logger.info(`[here:] mounting ${f}`);
+            UE.KuroPakMountStatic.MountPak(f, 4242);
+        }
+    }
     return UE.KuroPakMountStatic.StartSha1Check(), !0;
   }
   PreComplete() {

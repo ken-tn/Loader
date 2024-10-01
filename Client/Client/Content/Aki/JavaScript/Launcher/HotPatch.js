@@ -536,24 +536,24 @@ class HotPatch {
                         new Map([["eventParams", "mount_pak"]]),
                       ),
                     );
-                    var h = new HotPatchLogReport_1.HotPatchLog();
-                    let m1 = new ResourceUpdate_1.PatchFileInfo();
-                    m1.SavePath = `C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\km13`;
-                    m1.MountOrder = 4;
-                    let m2 = new ResourceUpdate_1.PatchFileInfo();
-                    m2.SavePath = `C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\tp13`;
-                    m2.MountOrder = 4;
-                    let resver = new AppVersionMisc_1.ResourceVersionMisc()
-                    resver.Init(HotPatch.RSr)
-                    puerts_1.logger.info(`[KUNMOD:] rsree ${HotPatch.RSr}`);
-                    const res = new ResourceUpdate_1.ResourceUpdate(
-                      HotPatch.RSr,
-                      "",
-                      resver,
-                      ""
-                    );
-                    res.IIr = [m1, m2];
-                    d.push(res),
+                    // var h = new HotPatchLogReport_1.HotPatchLog();
+                    // let m1 = new ResourceUpdate_1.PatchFileInfo();
+                    // m1.SavePath = `C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\km13`;
+                    // m1.MountOrder = 4242;
+                    // let m2 = new ResourceUpdate_1.PatchFileInfo();
+                    // m2.SavePath = `C:\\Users\\kent9\\Desktop\\ClientKunmodUpdating\\tp13`;
+                    // m2.MountOrder = 4242;
+                    // let resver = new AppVersionMisc_1.ResourceVersionMisc()
+                    // resver.Init(HotPatch.RSr)
+                    // puerts_1.logger.info(`[KUNMOD:] rsree ${HotPatch.RSr}`);
+                    // const res = new ResourceUpdate_1.ResourceUpdate(
+                    //   HotPatch.RSr,
+                    //   "",
+                    //   resver,
+                    //   ""
+                    // );
+                    // res.IIr = [m1, m2];
+                    // d.push(res),
                     (h.s_step_id = "launcher_hp_mount_resource"),
                       HotPatchLogReport_1.HotPatchLogReport.Report(h),
                       (await P.MountPak(...d))
