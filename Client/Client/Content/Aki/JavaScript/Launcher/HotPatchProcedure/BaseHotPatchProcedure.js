@@ -464,8 +464,10 @@ class BaseHotPatchProcedure {
         for (const a of o) {
           puerts_1.logger.info(`[KUNMOD:] mounting ${a.SavePath + ".pak"} at mountOrder ${a.MountOrder}`);
           var r = a.SavePath + ".pak";
-          UE.KuroPakMountStatic.MountPak(r, a.MountOrder),
-          UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
+          UE.KuroPakMountStatic.MountPak(r, a.MountOrder);
+          if (a.PakSha1 !== "") {
+            UE.KuroPakMountStatic.AddSha1Check(r, a.PakSha1);
+          }
         }
     }
     // if (!this.Mounted) {
