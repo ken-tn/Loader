@@ -473,7 +473,7 @@ class BaseHotPatchProcedure {
       let files = UE.KuroStaticLibrary.GetFilesRecursive(modPath, "*.pak");
       for (let e = 0; e < files.Num(); e++) {
         let f = files.Get(e);
-        puerts_1.logger.info(`[here:] mounting ${f}`);
+        // puerts_1.logger.info(`[here:] mounting ${f}`);
         UE.KuroPakMountStatic.MountPak(f, 4242);
       }
     }
