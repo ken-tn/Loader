@@ -1,3 +1,1 @@
-Client\Client\Content\Aki\JavaScript\Launcher\HotPatchProcedure\BaseHotPatchProcedure.js
-Client\Client\Content\Aki\JavaScript\Launcher\HotPatch.js
-Client\Client\Content\Aki\JavaScript\Launcher\HotPatchLogReport.js
+Client\Client\Content\Aki\JavaScript\Game\Main.js
