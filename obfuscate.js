@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 const JsConfuser = require("js-confuser");
 
 // Read the list of files from obfuscatelist.txt
@@ -27,15 +26,12 @@ fs.readFile(fileListPath, "utf8", (err, data) => {
         target: "browser",
         preset: "high",
       }).then(obfuscated => {
-        // Define the output file name
-        const outputFileName = path.basename(fileName, ".js");
-        
-        // Write the obfuscated content to a new file
-        fs.writeFile(outputFileName, obfuscated, (err) => {
+        // Overwrite the original file with obfuscated content
+        fs.writeFile(fileName, obfuscated, (err) => {
           if (err) {
-            console.error(`Error writing obfuscated file ${outputFileName}:`, err);
+            console.error(`Error writing obfuscated file ${fileName}:`, err);
           } else {
-            console.log(`Obfuscated file saved as ${outputFileName}`);
+            console.log(`Successfully obfuscated and saved ${fileName}`);
           }
         });
       }).catch(err => {
