@@ -19,7 +19,7 @@ fs.readFile(fileListPath, "utf8", (err, data) => {
 
     // Convert the linesToIgnoreTop and linesToIgnoreBottom to integers
     const topLinesCount = parseInt(linesToIgnoreTop, 10) || 0;  // Default to 0 if not provided
-    const bottomLinesCount = parseInt(linesToIgnoreBottom, 10) || 1;  // Default to 0 if not provided
+    const bottomLinesCount = parseInt(linesToIgnoreBottom, 10) || 0;  // Default to 0 if not provided
 
     // Read the content of the JavaScript file
     fs.readFile(fileName, "utf8", (err, jsSource) => {
@@ -33,18 +33,19 @@ fs.readFile(fileListPath, "utf8", (err, data) => {
 
       // Extract the lines to ignore at the top and bottom
       const topLines = fileLines.slice(0, topLinesCount).join("\n");
-      const bottomLines = fileLines.slice(-bottomLinesCount).join("\n");
-      
+      const bottomLines = bottomLinesCount > 0 ? fileLines.slice(-bottomLinesCount).join("\n") : "";
+
       // Extract the content to obfuscate (everything in between)
-      const contentToObfuscate = fileLines.slice(topLinesCount, -bottomLinesCount || undefined).join("\n");
+      const contentToObfuscate = fileLines.slice(topLinesCount, bottomLinesCount > 0 ? -bottomLinesCount : undefined).join("\n");
 
       // Obfuscate the middle content
       JsConfuser.obfuscate(contentToObfuscate, {
         target: "browser",
-        preset: "medium"
+        preset: "high",
+        stringEncoding: false,
       }).then(obfuscated => {
         // Combine the top, obfuscated, and bottom content
-        const finalContent = `${topLines}\n${obfuscated}\n${bottomLines}`;
+        const finalContent = `${topLines}\n${obfuscated}\n${bottomLines}`.trim();
 
         // Overwrite the original file with the combined content
         fs.writeFile(fileName, finalContent, (err) => {
