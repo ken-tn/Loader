@@ -1,1 +1,1 @@
-Client\Client\Content\Aki\JavaScript\Game\Main.js
+Client\Client\Content\Aki\JavaScript\Game\Main.js 3 1

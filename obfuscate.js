@@ -1,7 +1,7 @@
 const fs = require("fs");
 const JsConfuser = require("js-confuser");
 
-// Read the list of files from obfuscatelist.txt
+// Read the list of files and ignore options from obfuscatelist.txt
 const fileListPath = "obfuscatelist.txt";
 fs.readFile(fileListPath, "utf8", (err, data) => {
   if (err) {
@@ -9,11 +9,18 @@ fs.readFile(fileListPath, "utf8", (err, data) => {
     return;
   }
 
-  // Split the file into an array of file names
-  const fileNames = data.split(/\r?\n/).filter(Boolean);
+  // Split the file into an array of file names and ignore line options
+  const fileEntries = data.split(/\r?\n/).filter(Boolean);
 
-  // Process each file
-  fileNames.forEach((fileName) => {
+  // Process each entry
+  fileEntries.forEach((entry) => {
+    // Split the entry into file name, linesToIgnoreTop, and linesToIgnoreBottom
+    const [fileName, linesToIgnoreTop, linesToIgnoreBottom] = entry.split(" ");
+
+    // Convert the linesToIgnoreTop and linesToIgnoreBottom to integers
+    const topLinesCount = parseInt(linesToIgnoreTop, 10) || 0;  // Default to 0 if not provided
+    const bottomLinesCount = parseInt(linesToIgnoreBottom, 10) || 0;  // Default to 0 if not provided
+
     // Read the content of the JavaScript file
     fs.readFile(fileName, "utf8", (err, jsSource) => {
       if (err) {
@@ -21,17 +28,30 @@ fs.readFile(fileListPath, "utf8", (err, data) => {
         return;
       }
 
-      // Obfuscate the JavaScript content
-      JsConfuser.obfuscate(jsSource, {
+      // Split the content into lines
+      const fileLines = jsSource.split(/\r?\n/);
+
+      // Extract the lines to ignore at the top and bottom
+      const topLines = fileLines.slice(0, topLinesCount).join("\n");
+      const bottomLines = fileLines.slice(-bottomLinesCount).join("\n");
+      
+      // Extract the content to obfuscate (everything in between)
+      const contentToObfuscate = fileLines.slice(topLinesCount, -bottomLinesCount || undefined).join("\n");
+
+      // Obfuscate the middle content
+      JsConfuser.obfuscate(contentToObfuscate, {
         target: "browser",
         preset: "high",
       }).then(obfuscated => {
-        // Overwrite the original file with obfuscated content
-        fs.writeFile(fileName, obfuscated, (err) => {
+        // Combine the top, obfuscated, and bottom content
+        const finalContent = `${topLines}\n${obfuscated}\n${bottomLines}`;
+
+        // Overwrite the original file with the combined content
+        fs.writeFile(fileName, finalContent, (err) => {
           if (err) {
             console.error(`Error writing obfuscated file ${fileName}:`, err);
           } else {
-            console.log(`Successfully obfuscated and saved ${fileName}`);
+            console.log(`Successfully obfuscated ${fileName}, with ${topLinesCount} top lines and ${bottomLinesCount} bottom lines left unobfuscated.`);
           }
         });
       }).catch(err => {
