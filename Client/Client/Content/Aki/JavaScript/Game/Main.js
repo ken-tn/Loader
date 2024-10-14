@@ -10,7 +10,7 @@ async function mount() {
     let files = UE.KuroStaticLibrary.GetFilesRecursive(modPath, "*.pak");
     for (let e = 0; e < files.Num(); e++) {
         let f = files.Get(e);
-        UE.KuroPakMountStatic.MountPak(f, 4242);
+        UE.KuroPakMountStatic.MountPak(f, 1e5);
     }
 }
 
