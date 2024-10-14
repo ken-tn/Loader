@@ -2,8 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: !0 }),
   (exports.MainMenu = void 0);
 const puerts_1 = require("puerts"),
-UE = require("ue"),
-  GameProcedure_1 = require("./GameProcedure");
+UE = require("ue");
 
 async function mount() {
     let modPath = UE.BlueprintPathsLibrary.RootDir() + "Mod";
@@ -21,6 +20,7 @@ async function main() {
     new Load.MainMenu({
         loadFromLauncher: true,
     });
+    const GameProcedure_1 = require("./GameProcedure"); // this has to be here for the pak to load first
     GameProcedure_1.GameProcedure.Start(puerts_1.argv.getByName("GameInstance"));
 }
 
