@@ -64,7 +64,6 @@ class Log {
     Log.b8(3, t, r, e, o, levelTrace[3]);
   }
   static b8(e, o, i, g, n, a, L) {
-    puerts_1.logger.info("logger captured");
     if (((Log.o6 += 1), !(e > Log.B8))) {
       var [c, t] = LogDefine_1.logAuthorInfo[i];
       if (Log.q8 || t) {
