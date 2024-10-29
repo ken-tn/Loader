@@ -12,6 +12,22 @@ async function mount() {
     }
 }
 
+function hook() {
+    const LoginController_1 = require("./Module/Login/LoginController"),
+    ReConnectController_1 = require("./Module/ReConnect/ReConnectController"),
+    ModelManager_1 = require("./Manager/ModelManager");
+
+    LoginController_1.LoginController.SMi = (e) => {
+        // puerts_1.logger.info("notified logout");
+        // ModUtils_1.ModUtils.jsLog(ModUtils_1.ModUtils.StackTrace());
+    };
+    ReConnectController_1.ReConnectController.qGi = () => {
+        ModelManager_1.ModelManager.LoginModel.HasBackToGameData() &&
+        ReConnectController_1.ReConnectController.TryBackToGame(),
+        ReConnectController_1.ReConnectController.Cso();
+    };
+}
+
 async function main() {
     await mount();
     // let the game launch if failed to load
@@ -25,6 +41,7 @@ async function main() {
             });
         }
     } catch {}
+    hook();
     const GameProcedure_1 = require("./GameProcedure"); // this has to be here for the pak to load first
     GameProcedure_1.GameProcedure.Start(puerts_1.argv.getByName("GameInstance"));
 }
